@@ -6,7 +6,17 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: const Text('onboardin')),
+      backgroundColor: const Color.fromARGB(255, 143, 139, 139),
+      body: Column(
+        children: [
+          PageView.builder(
+            itemCount: 3,
+            itemBuilder: (context, index) {
+              
+            },
+            ),
+        ],
+      ),
     );
   }
 }
