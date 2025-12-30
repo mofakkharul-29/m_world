@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class PageBuilderItem extends StatelessWidget {
   final Map<String, dynamic> currentPage;
   final int idx;
+  final VoidCallback onFinish;
   const PageBuilderItem({
     super.key,
     required this.currentPage,
     required this.idx,
+    required this.onFinish,
   });
 
   @override
@@ -48,7 +50,7 @@ class PageBuilderItem extends StatelessWidget {
         const SizedBox(height: 20),
         idx == 2
             ? CustomElevatedButton(
-                onPressed: () {},
+                onPressed: onFinish,
                 text: 'Get Started',
               )
             : SizedBox(),
