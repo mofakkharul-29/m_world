@@ -22,33 +22,41 @@ class LoginScreen extends ConsumerWidget {
                 ScrollViewKeyboardDismissBehavior.onDrag,
             scrollDirection: Axis.vertical,
             padding: const EdgeInsets.symmetric(
-              vertical: 10.5,
+              // vertical: 10.5,
               horizontal: 15,
             ),
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: 'Email',
-                  prefixIcon: Icons.email_outlined,
-                  keyboardType: TextInputType.emailAddress,
-                  controller: form.emailController,
-                  focusNode: form.emailFocus,
-                  textInputAction: TextInputAction.next,
-                  obscureText: false,
-                  onSubmitted: (_) =>
-                      form.moveToPassword(context),
-                ),
-                const SizedBox(height: 10),
-                CustomTextField(
-                  labelText: 'Password',
-                  prefixIcon: Icons.lock_outlined,
-                  controller: form.passwordController,
-                  focusNode: form.passwordFocus,
-                  textInputAction: TextInputAction.done,
-                  obscureText: true,
-                  onSubmitted: (_) => form.submit(context),
-                ),
-              ],
+            child: SizedBox(
+              height:
+                  MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomTextField(
+                    labelText: 'Email',
+                    prefixIcon: Icons.email_outlined,
+                    keyboardType:
+                        TextInputType.emailAddress,
+                    controller: form.emailController,
+                    focusNode: form.emailFocus,
+                    textInputAction: TextInputAction.next,
+                    obscureText: false,
+                    onSubmitted: (_) =>
+                        form.moveToPassword(context),
+                  ),
+                  const SizedBox(height: 10),
+                  CustomTextField(
+                    labelText: 'Password',
+                    prefixIcon: Icons.lock_outlined,
+                    controller: form.passwordController,
+                    focusNode: form.passwordFocus,
+                    textInputAction: TextInputAction.done,
+                    obscureText: true,
+                    onSubmitted: (_) =>
+                        form.submit(context),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
