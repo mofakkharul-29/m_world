@@ -1,5 +1,6 @@
+import 'package:firebase_auth_practice/common/custom_elevated_button.dart';
 import 'package:firebase_auth_practice/const/colors/color_pallete.dart';
-import 'package:firebase_auth_practice/features/presentation/screens/log_reg/provider/controller_provider.dart';
+import 'package:firebase_auth_practice/features/presentation/screens/log_reg/provider/login_state_notifier.dart';
 import 'package:firebase_auth_practice/features/presentation/screens/log_reg/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +10,10 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final form = ref.watch(loginFieldControllerProvider);
+    final state = ref.watch(loginStateNotifierProvider);
+    final notifier = ref.read(
+      loginStateNotifierProvider.notifier,
+    );
 
     return GestureDetector(
       onTap: () =>
@@ -37,23 +41,27 @@ class LoginScreen extends ConsumerWidget {
                     prefixIcon: Icons.email_outlined,
                     keyboardType:
                         TextInputType.emailAddress,
-                    controller: form.emailController,
-                    focusNode: form.emailFocus,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
-                    onSubmitted: (_) =>
-                        form.moveToPassword(context),
+                    errorText: state.emailError,
+                    onChange: notifier.onEmailChanged,
                   ),
                   const SizedBox(height: 10),
                   CustomTextField(
                     labelText: 'Password',
                     prefixIcon: Icons.lock_outlined,
-                    controller: form.passwordController,
-                    focusNode: form.passwordFocus,
                     textInputAction: TextInputAction.done,
                     obscureText: true,
-                    onSubmitted: (_) =>
-                        form.submit(context),
+                    errorText: state.passwordError,
+                    onChange: notifier.onPasswordChanged,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomElevatedButton(
+                    onPressed: () {
+                      final isValid = notifier.submit();
+                      if (isValid) {}
+                    },
+                    text: 'login',
                   ),
                 ],
               ),

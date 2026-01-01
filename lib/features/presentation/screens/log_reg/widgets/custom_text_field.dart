@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final FocusNode? focusNode;
-  final TextEditingController? controller;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final void Function(String)? onSubmitted;
+  final void Function(String)? onChange;
   final IconData prefixIcon;
   final String labelText;
   final String? errorText;
@@ -17,21 +17,21 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction,
     this.errorText,
     this.onSubmitted,
+    this.onChange,
     required this.labelText,
     required this.prefixIcon,
-    required this.controller,
     required this.obscureText,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       obscureText: obscureText,
       onSubmitted: onSubmitted,
+      onChanged: onChange,
       decoration: InputDecoration(
         errorText: errorText,
         errorStyle: TextStyle(color: Colors.red),
