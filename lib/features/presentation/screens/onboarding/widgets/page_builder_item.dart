@@ -47,7 +47,7 @@ class PageBuilderItem extends StatelessWidget {
           10,
           10,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         idx == 2
             ? CustomElevatedButton(
                 onPressed: onFinish,
