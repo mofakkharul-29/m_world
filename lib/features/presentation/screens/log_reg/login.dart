@@ -1,3 +1,6 @@
+import 'package:firebase_auth_practice/common/check_button.dart';
+import 'package:firebase_auth_practice/common/common_text.dart';
+import 'package:firebase_auth_practice/common/custom_divider.dart';
 import 'package:firebase_auth_practice/common/custom_elevated_button.dart';
 import 'package:firebase_auth_practice/const/colors/color_pallete.dart';
 import 'package:firebase_auth_practice/features/presentation/screens/log_reg/provider/login_state_notifier.dart';
@@ -55,7 +58,21 @@ class LoginScreen extends ConsumerWidget {
                     errorText: state.passwordError,
                     onChange: notifier.onPasswordChanged,
                   ),
-                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment:
+                        MainAxisAlignment.start,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start,
+                    children: [
+                      CheckButton(
+                        icon: Icons.check_box_outline_blank,
+                      ),
+                      CommonText(
+                        text: 'Remember me',
+                        size: 15.0,
+                      ),
+                    ],
+                  ),
                   CustomElevatedButton(
                     onPressed: () {
                       final isValid = notifier.submit();
@@ -66,26 +83,14 @@ class LoginScreen extends ConsumerWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Expanded(
-                        child: Divider(
-                          endIndent: 5,
-                          height: 2.5,
-                          color: Colors.black87,
-                        ),
+                      CustomDivider(
+                        startIndent: 0.0,
+                        endIndent: 5.0,
                       ),
-                      const Text(
-                        'or',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          indent: 5,
-                          height: 2.5,
-                          color: Colors.black87,
-                        ),
+                      CommonText(text: 'or', size: 20.0),
+                      CustomDivider(
+                        startIndent: 5.0,
+                        endIndent: 0.0,
                       ),
                     ],
                   ),
