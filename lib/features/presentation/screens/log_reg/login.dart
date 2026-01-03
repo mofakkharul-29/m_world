@@ -63,6 +63,32 @@ class LoginScreen extends ConsumerWidget {
                     },
                     text: 'login',
                   ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          endIndent: 5,
+                          height: 2.5,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const Text(
+                        'or',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          indent: 5,
+                          height: 2.5,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
