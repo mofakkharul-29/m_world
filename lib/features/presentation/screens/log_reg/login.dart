@@ -2,6 +2,7 @@ import 'package:firebase_auth_practice/common/check_button.dart';
 import 'package:firebase_auth_practice/common/common_text.dart';
 import 'package:firebase_auth_practice/common/custom_divider.dart';
 import 'package:firebase_auth_practice/common/custom_elevated_button.dart';
+import 'package:firebase_auth_practice/common/login_options.dart';
 import 'package:firebase_auth_practice/const/colors/color_pallete.dart';
 import 'package:firebase_auth_practice/features/presentation/screens/log_reg/provider/login_state_notifier.dart';
 import 'package:firebase_auth_practice/features/presentation/screens/log_reg/widgets/custom_text_field.dart';
@@ -70,6 +71,7 @@ class LoginScreen extends ConsumerWidget {
                       CommonText(
                         text: 'Remember me',
                         size: 15.0,
+                        fontWeight: FontWeight.w700,
                       ),
                     ],
                   ),
@@ -82,18 +84,42 @@ class LoginScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment:
+                        MainAxisAlignment.end,
+                    children: [
+                      const CommonText(
+                        text: 'don\'t have account?',
+                        size: 15,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: const CommonText(
+                          text: 'Sign up',
+                          size: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
                     children: [
                       CustomDivider(
                         startIndent: 0.0,
                         endIndent: 5.0,
                       ),
-                      CommonText(text: 'or', size: 20.0),
+                      CommonText(
+                        text: 'or',
+                        size: 20.0,
+                        fontWeight: FontWeight.w700,
+                      ),
                       CustomDivider(
                         startIndent: 5.0,
                         endIndent: 0.0,
                       ),
                     ],
                   ),
+                  LoginOptions(),
                 ],
               ),
             ),

@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class CommonText extends StatelessWidget {
   final String text;
   final double size;
-  const CommonText({super.key, required this.text, required this.size});
+  final FontWeight? fontWeight;
+  const CommonText({
+    super.key,
+    required this.text,
+    required this.size,
+    required this.fontWeight,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,7 @@ class CommonText extends StatelessWidget {
         color: Colors.black87,
         fontSize: size,
         letterSpacing: 1.2,
-        fontWeight: FontWeight.w700,
+        fontWeight: fontWeight,
       ),
     );
   }
