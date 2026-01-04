@@ -1,4 +1,5 @@
 import 'package:firebase_auth_practice/core/routing/routing_path_name.dart';
+import 'package:firebase_auth_practice/core/routing/transition/fade_route.dart';
 import 'package:firebase_auth_practice/core/startup/redirection_path.dart';
 import 'package:firebase_auth_practice/features/presentation/screens/home/home_screen.dart';
 import 'package:firebase_auth_practice/features/presentation/screens/log_reg/login.dart';
@@ -59,12 +60,18 @@ class RoutingConfig {
         GoRoute(
           path: '/login',
           name: loginScreenRoute,
-          builder: (context, state) => const LoginScreen(),
+          pageBuilder: (context, state) => fadeRoute(
+            state: state,
+            child: const LoginScreen(),
+          ),
         ),
         GoRoute(
           path: '/register',
           name: registerScreenRoute,
-          builder: (context, state) => const SignUpScreen(),
+          pageBuilder: (context, state) => fadeRoute(
+            state: state,
+            child: const SignUpScreen(),
+          ),
         ),
         GoRoute(
           path: '/home',

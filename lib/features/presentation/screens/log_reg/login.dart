@@ -8,6 +8,7 @@ import 'package:firebase_auth_practice/features/presentation/screens/log_reg/pro
 import 'package:firebase_auth_practice/features/presentation/screens/log_reg/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
@@ -30,7 +31,6 @@ class LoginScreen extends ConsumerWidget {
                 ScrollViewKeyboardDismissBehavior.onDrag,
             scrollDirection: Axis.vertical,
             padding: const EdgeInsets.symmetric(
-              // vertical: 10.5,
               horizontal: 15,
             ),
             child: SizedBox(
@@ -88,12 +88,14 @@ class LoginScreen extends ConsumerWidget {
                         MainAxisAlignment.end,
                     children: [
                       const CommonText(
-                        text: 'don\'t have account?',
+                        text: 'don\'t have an account?',
                         size: 15,
                         fontWeight: FontWeight.normal,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          context.go('/register');
+                        },
                         child: const CommonText(
                           text: 'Sign up',
                           size: 14,
